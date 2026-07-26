@@ -95,6 +95,7 @@
 <script>
     document.getElementById("registrationForm").addEventListener("submit", function(event) {
         event.preventDefault();        
+	this.reset();
         document.getElementById("message").style.display = "block";
     });
 </script>
