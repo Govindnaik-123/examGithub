@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+<style>
+body{
+font-family :Arial;
+background :#f2f2f2;
+display :flex;
+jastify-content :center;
+align-items :center;
+min-height :100vh;
+margin:0;
+}
+.container{
+padding: 25px;
+border-radius:40px;
+box-shadow :0 0 600px rgbs(0,0,0,30);
+width:350;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Registration Form</h2>
+
+    <form id="registrationForm">
+        <label for="firstname">First Name</label><br>
+        <input type="text" id="firstname" required><br>
+
+        <label for="lastname">Last Name</label><br>
+        <input type="text" id="lastname" required><br>
+
+        <label for="phone">Phone Number</label><br>
+        <input type="tel" id="phone" pattern="[0-9]{10}" placeholder="10-digit phone number" required><br>
+
+        <label for="altphone">Alternate Phone Number</label><br>
+        <input type="tel" id="altphone" pattern="[0-9]{10}" placeholder="10-digit phone number"><br>
+
+        <label for="gmail">Gmail</label><br>
+        <input type="email" id="gmail" placeholder="example@gmail.com" required><br>
+
+        <label for="rollno">Roll Number</label><br>
+        <input type="text" id="rollno" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="message"></p>
+</div>
+
+<script>
+    document.getElementById("registrationForm").addEventListener("submit", function(e) {
+        e.preventDefault(); 
+        this.reset();
+        
+        var msg = document.getElementById("message");
+        msg.textContent = "Submitted!";
+    });
+</script>
+
+</body>
+</html>
