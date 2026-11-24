@@ -24,3 +24,47 @@
   <script>const count = document.getElementById('count');</script>
 </body>
 </html>
+
+#----------------------------Selenium code------------------
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+
+package javascript_selenium;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+/**
+ *
+ * @author GOVIND NAIK
+ */
+public class JavaScript_Selenium {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        
+        WebDriver driver = new EdgeDriver();
+
+        try {
+            // Open the local JavaScript Calculator
+            driver.get("file:///C:/Users/GOVIND%20NAIK/DEV/simple_calculator.html");
+
+            // Print the title of the page
+            System.out.println("Title: " + driver.getTitle());
+
+            // Wait for 60 seconds
+            Thread.sleep(60000);
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+
+        } finally {
+            driver.quit();
+        }
+
+    }
+    
+}
