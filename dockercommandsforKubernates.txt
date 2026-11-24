@@ -1,3 +1,4 @@
+#---------Integration with Kubernetes24-------------------
 docker --version
 docker images
 kubectl get nodes
@@ -8,3 +9,20 @@ kubectl get deployments
 kubectl get pods
 kubectl get services
 kubectl port-forward service/registration-service 8085:80
+
+#------------------containerized application using Kubernetes25---------------
+
+docker --version
+docker images
+docker ps
+kubectl get nodes
+kubectl apply -f k8s-registration.yaml
+kubectl get deployments
+kubectl get pods
+kubectl get services
+kubectl scale deployment registration-deployment --replicas=3
+kubectl get pods
+kubectl rollout restart deployment registration-deployment
+kubectl rollout status deployment registration-deployment
+kubectl port-forward service/registration-service 8085:80
+
