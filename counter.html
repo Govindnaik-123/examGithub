@@ -68,3 +68,62 @@ public class JavaScript_Selenium {
     }
     
 }
+#-------------------testcases for containerised application------------------------
+package javascript_selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+
+public class JavaScript_Selenium {
+
+    private static WebElement findInput(WebDriver driver, String key, String typeFallback) {
+        String k = key.toLowerCase();
+        String xpath = "//input["
+                + "contains(translate(@id, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + k + "') or "
+                + "contains(translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + k + "') or "
+                + "contains(translate(@placeholder, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + k + "') or "
+                + "@type='" + typeFallback + "'"
+                + "]";
+        return driver.findElement(By.xpath(xpath));
+    }
+
+    public static void main(String[] args) {
+        WebDriver driver = new EdgeDriver();
+
+        try {
+            driver.get("http://localhost:8080/registration.html");
+            System.out.println("Title: " + driver.getTitle());
+
+            // TC-01: Name
+            WebElement name = findInput(driver, "name", "text");
+            name.clear();
+            name.sendKeys("Govind Naik");
+            System.out.println("TC-01 Name: " + name.getAttribute("value"));
+
+            // TC-02: Gmail
+            WebElement email = findInput(driver, "email", "email");
+            email.clear();
+            email.sendKeys("govind.naik@gmail.com");
+            System.out.println("TC-02 Email: " + email.getAttribute("value"));
+
+            WebElement phone = findInput(driver, "phone", "tel");
+            phone.clear();
+            phone.sendKeys("9876543210");
+            System.out.println("TC-03 Phone: " + phone.getAttribute("value"));
+
+            driver.findElement(By.cssSelector("button[type='submit'], input[type='submit'], button")).click();
+            System.out.println("TC-04 Submit: PASSED");
+
+            Thread.sleep(60000);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            driver.quit();
+        }
+    }
+}
+
+#------------------RunDockerApplicationFile--------------------
+docker run -d --name reg-web -p 8080:80 -v "${PWD}:/usr/share/nginx/html:ro" nginx:alpine
