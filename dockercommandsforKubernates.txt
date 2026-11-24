@@ -1,0 +1,10 @@
+docker --version
+docker images
+kubectl get nodes
+kubectl create configmap registration-html --from-file=index.html=registration.html --dry-run=client -o yaml | kubectl apply -f -
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+kubectl get deployments
+kubectl get pods
+kubectl get services
+kubectl port-forward service/registration-service 8085:80
