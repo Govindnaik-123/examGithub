@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Counter</title>
+  <style>
+    body {
+ font-family: Arial; 
+ text-align: center; 
+ margin-top: 80px; 
+ background: #f4f4f4;
+ }
+    button { 
+	padding: 8px 16px; 
+	font-size: 16px;
+	margin: 4px;
+	cursor: pointer;
+	 }
+  </style>
+</head>
+<body>
+  <h2 id="count">0</h2>
+  <button onclick="count.textContent = +count.textContent + 1">+</button>
+  <button onclick="count.textContent = 0">Reset</button>
+  <script>const count = document.getElementById('count');</script>
+</body>
+</html>
