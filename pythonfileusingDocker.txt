@@ -26,5 +26,5 @@ print("Welcome to Docker, GovindNaik")
 Rename-Item Dockerfile.txt Dockerfile
 
 #-----------output-----------
-
-docker run --name python-container python-docker-app
+docker build -t govind-app .
+docker run --name python-container govind-app
