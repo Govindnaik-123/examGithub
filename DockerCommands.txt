@@ -1,0 +1,19 @@
+docker ps
+docker ps -a
+docker create nginx
+docker start suspicious_thompson
+docker stop 946799a7e8c3
+docker create --name ngix_ser01 nginx
+docker start ngix_ser01
+docker rename ngix_ser01 nginx_server1
+docker stop nginx_server1
+docker run --name nginx_server2 nginx
+docker run -d --name nginx_server3 nginx
+docker stop nginx_server3
+docker start nginx_server3
+docker kill nginx_server3
+docker exec -it nginx_server3 /bin/bash
+docker rm nginx_server3
+docker rm nginx_server2
+docker rm nginx_server1
+docker rm suspicious_thompson
