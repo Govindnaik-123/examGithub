@@ -1,0 +1,23 @@
+-----#Dockerfile-------------
+# Use official Python image
+FROM python:3.10-slim
+
+# Set working directory in container
+WORKDIR /app
+
+# Copy project files into container
+COPY . .
+
+# Install dependencies (if you have requirements.txt)
+RUN if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+# Run the Python script
+CMD ["python", "app.py"]
+
+#--------------requirements.txt-------------
+flask
+numpy
+#--------------app.py----------
+
+print("Welcome to Docker, GovindNaik")
+
